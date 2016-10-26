@@ -5,4 +5,10 @@
     <string name="vaccines">Vaccines</string>
     <string name="medical_history">Medical History</string>
     <string name="user_profile">User Profile</string>
+
+    <string name="title_activity_setup">setupActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="please_enter_the_information_below">Please enter the information below.</string>
+    <string name="welcome_to_med44">Welcome to MED44!</string>
 </resources>
