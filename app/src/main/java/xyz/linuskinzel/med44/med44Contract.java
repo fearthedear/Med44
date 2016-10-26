@@ -41,8 +41,8 @@ public final class med44Contract {
         public static final String COLUMN_NAME_IMAGE = "image";
     }
 
-    public static class conditions implements BaseColumns {
-        public static final String TABLE_NAME = "conditions";
+    public static class med_conditions implements BaseColumns {
+        public static final String TABLE_NAME = "med_conditions";
         public static final String COLUMN_NAME_NAME = "name";
         public static final String COLUMN_NAME_DATE_DIAGNOSED = "date_diagnosed";
     }
