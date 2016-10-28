@@ -20,7 +20,8 @@
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
             android:id="@+id/userprofileTextview"
-            android:background="#363732"/>
+            android:background="#363732"
+            android:onClick="onClick_UserProfile"/>
 
         <TextView
             android:text="@string/medical_history"
@@ -29,7 +30,8 @@
             android:gravity="center_horizontal"
             android:id="@+id/medicalhistoryTextview"
             android:layout_weight="1"
-            android:background="#53D8FB"/>
+            android:background="#53D8FB"
+            android:onClick="onClick_medicalHistory"/>
 
     </LinearLayout>
 
@@ -45,7 +47,8 @@
             android:gravity="center_horizontal"
             android:layout_height="match_parent"
             android:id="@+id/textViewVaccines"
-            android:background="#66C3FF"/>
+            android:background="#66C3FF"
+            android:onClick="onClick_vaccines"/>
 
         <TextView
             android:text="@string/prescriptions"
@@ -54,7 +57,8 @@
             android:gravity="center_horizontal"
             android:id="@+id/textViewPrescriptions"
             android:layout_weight="1"
-            android:background="#DCE1E9"/>
+            android:background="#DCE1E9"
+            android:onClick="onClick_prescriptions"/>
 
     </LinearLayout>
     <LinearLayout
@@ -69,6 +73,7 @@
             android:gravity="center_horizontal"
             android:layout_height="match_parent"
             android:id="@+id/textViewContact"
-            android:background="#D4AFB9"/>
+            android:background="#D4AFB9"
+            android:onClick="onClick_seeDoctor"/>
     </LinearLayout>
 </LinearLayout>

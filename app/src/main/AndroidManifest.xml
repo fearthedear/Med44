@@ -21,7 +21,12 @@
             android:name=".setupActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_setup"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:theme="@style/FullscreenTheme" />
+        <activity android:name=".UserProfile" />
+        <activity android:name=".MedicalHistory" />
+        <activity android:name=".Prescriptions" />
+        <activity android:name=".Vaccines" />
+        <activity android:name=".seeDoctor"></activity>
     </application>
 
 </manifest>

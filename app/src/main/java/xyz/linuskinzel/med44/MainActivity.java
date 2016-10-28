@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
@@ -29,5 +30,30 @@ public class MainActivity extends Activity {
         else {
             Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void onClick_UserProfile (View v) {
+        Intent anIntent = new Intent(this, UserProfile.class);
+        startActivity(anIntent);
+    }
+
+    public void onClick_medicalHistory (View v) {
+        Intent anIntent = new Intent(this, MedicalHistory.class);
+        startActivity(anIntent);
+    }
+
+    public void onClick_prescriptions (View v) {
+        Intent anIntent = new Intent(this, Prescriptions.class);
+        startActivity(anIntent);
+    }
+
+    public void onClick_vaccines (View v) {
+        Intent anIntent = new Intent(this, Vaccines.class);
+        startActivity(anIntent);
+    }
+
+    public void onClick_seeDoctor (View v) {
+        Intent anIntent = new Intent(this, seeDoctor.class);
+        startActivity(anIntent);
     }
 }
