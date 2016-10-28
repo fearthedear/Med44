@@ -50,6 +50,8 @@
                 android:textSize="17sp"
                 android:textColor="@color/white"/>
 
+            <!-- Todo: change edittext to TextInputLayout for material design -->
+            <!-- Todo: make spinners instead of textinput -->
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
