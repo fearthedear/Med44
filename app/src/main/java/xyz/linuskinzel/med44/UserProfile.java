@@ -37,8 +37,6 @@ public class UserProfile extends Activity {
         heightTextView.setText(String.valueOf(height));
 
 
-
-
         RadioGroup genderRadio = (RadioGroup)findViewById(R.id.genderRadio);
         if ("Male".equals(gender)) {
             genderRadio.check(R.id.radioButtonMale);
@@ -61,9 +59,6 @@ public class UserProfile extends Activity {
         else if ("O".equals(blood)) {
             bloodRadio.check(R.id.radioButtonO);
         }
-
-
-
     }
 
     public void onRadioButtonClicked(View view) {
@@ -71,30 +66,51 @@ public class UserProfile extends Activity {
         boolean checked = ((RadioButton) view).isChecked();
 
         // Check which radio button was clicked
+        // TODO: 29/10/2016 save clicked button to sharedpreferences
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
         switch(view.getId()) {
             case R.id.radioButtonA:
-                if (checked)
-                    // Pirates are the best
+                if (checked) {
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("bloodtype", "A");
+                    editor.apply();
+                    }
                     break;
             case R.id.radioButtonAB:
-                if (checked)
-                    // Ninjas rule
+                if (checked){
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("bloodtype", "AB");
+                    editor.apply();
+                }
                     break;
             case R.id.radioButtonB:
-                if (checked)
-                    // Pirates are the best
-                    break;
+                if (checked){
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("bloodtype", "B");
+                    editor.apply();
+                }
+                break;
             case R.id.radioButtonO:
-                if (checked)
-                    // Ninjas rule
+                if (checked){
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("bloodtype", "O");
+                    editor.apply();
+                }
                     break;
             case R.id.radioButtonMale:
-                if (checked)
-                    // Pirates are the best
+                if (checked){
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("gender", "Male");
+                    editor.apply();
+                }
                     break;
             case R.id.radioButtonFemale:
-                if (checked)
-                    // Ninjas rule
+                if (checked){
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("bloodtype", "Female");
+                    editor.apply();
+                }
                     break;
         }
     }
