@@ -11,4 +11,16 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="please_enter_the_information_below">Please enter the information below.</string>
     <string name="welcome_to_med44">Welcome to MED44!</string>
+
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="blood_array">
+        <item>A</item>
+        <item>B</item>
+        <item>AB</item>
+        <item>O</item>
+    </string-array>
 </resources>

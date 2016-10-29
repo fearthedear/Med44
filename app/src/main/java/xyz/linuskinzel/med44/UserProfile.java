@@ -36,26 +36,29 @@ public class UserProfile extends Activity {
         weightTextView.setText(String.valueOf(weight));
         heightTextView.setText(String.valueOf(height));
 
+
+
+
         RadioGroup genderRadio = (RadioGroup)findViewById(R.id.genderRadio);
-        if (gender == "male") {
+        if ("Male".equals(gender)) {
             genderRadio.check(R.id.radioButtonMale);
         }
 
-        else if (gender == "female"){
+        else if ("Female".equals(gender)){
             genderRadio.check(R.id.radioButtonFemale);
         }
 
         RadioGroup bloodRadio = (RadioGroup)findViewById(R.id.bloodRadio);
-        if (blood == "A") {
+        if ("A".equals(blood)) {
             bloodRadio.check(R.id.radioButtonA);
         }
-        else if (blood == "B") {
+        else if ("B".equals(blood)) {
             bloodRadio.check(R.id.radioButtonB);
         }
-        else if (blood == "AB") {
+        else if ("AB".equals(blood)) {
             bloodRadio.check(R.id.radioButtonAB);
         }
-        else if (blood == "O") {
+        else if ("O".equals(blood)) {
             bloodRadio.check(R.id.radioButtonO);
         }
 

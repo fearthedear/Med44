@@ -72,15 +72,36 @@
                 android:id="@+id/editText2"
                 android:layout_marginTop="10dp"/>
 
-            <EditText
+            <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="Gender"
-                android:ems="10"
-                android:background="@color/white"
-                android:id="@+id/editText3"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:background="@color/white">
+                <TableRow>
+                    <TextView
+                        android:text="Gender"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"/>
+                    <Spinner
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:id="@+id/gender_spinner"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"/>
+                </TableRow>
+            </TableLayout>
+
+
+
+            <!--<EditText-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:inputType="text"-->
+                <!--android:hint="Gender"-->
+                <!--android:ems="10"-->
+                <!--android:background="@color/white"-->
+                <!--android:id="@+id/editText3"-->
+                <!--android:layout_marginTop="10dp"/>-->
 
             <EditText
                 android:layout_width="match_parent"
@@ -103,6 +124,25 @@
                 android:id="@+id/editText5"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"/>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white">
+                <TableRow>
+                    <TextView
+                        android:text="Blood Type"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"/>
+                    <Spinner
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:id="@+id/blood_spinner"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"/>
+                </TableRow>
+            </TableLayout>
 
             <EditText
                 android:layout_width="match_parent"

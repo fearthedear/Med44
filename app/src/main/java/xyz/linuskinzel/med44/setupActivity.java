@@ -10,7 +10,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 /**
@@ -98,6 +100,21 @@ public class setupActivity extends AppCompatActivity {
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
+        //setup Spinners
+        Spinner spinner = (Spinner) findViewById(R.id.gender_spinner);
+        Spinner bloodspinner = (Spinner) findViewById(R.id.blood_spinner);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.gender_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
+                R.array.blood_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+        bloodspinner.setAdapter(adapter2);
+
 
         // Set up the user interaction to manually show or hide the system UI.
         mContentView.setOnClickListener(new View.OnClickListener() {
@@ -180,8 +197,8 @@ public class setupActivity extends AppCompatActivity {
             return;
         }
 
-        EditText gender = (EditText) findViewById(R.id.editText3);
-        String genderStr = gender.getText().toString();
+//        EditText gender = (EditText) findViewById(R.id.editText3);
+//        String genderStr = gender.getText().toString();
         EditText height = (EditText) findViewById(R.id.editText4);
         Float heightFloat = null;
         try {
@@ -198,9 +215,14 @@ public class setupActivity extends AppCompatActivity {
             Toast.makeText(this, "Please enter your weight", Toast.LENGTH_SHORT).show();
             return;
         }
-        EditText bloodtype = (EditText) findViewById(R.id.editText6);
-        String bloodtypeStr = bloodtype.getText().toString();
+//        EditText bloodtype = (EditText) findViewById(R.id.editText6);
+//        String bloodtypeStr = bloodtype.getText().toString();
 
+        //get Spinner values
+        Spinner spinner = (Spinner) findViewById(R.id.gender_spinner);
+        String genderStr = spinner.getSelectedItem().toString();
+        Spinner spinner2 = (Spinner) findViewById(R.id.blood_spinner);
+        String bloodtypeStr = spinner2.getSelectedItem().toString();
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = pref.edit();
