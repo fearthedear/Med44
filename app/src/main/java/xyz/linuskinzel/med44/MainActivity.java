@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
-import android.view.Window;
 
 public class MainActivity extends Activity {
 
@@ -14,7 +13,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Remove title bar
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
         //check if name is set in sharedpreferences
@@ -29,7 +28,7 @@ public class MainActivity extends Activity {
     }
 
     public void onClick_UserProfile (View v) {
-        Intent anIntent = new Intent(this, UserProfile.class);
+        Intent anIntent = new Intent(this, UserProfile2.class);
         startActivity(anIntent);
     }
 
@@ -39,7 +38,7 @@ public class MainActivity extends Activity {
     }
 
     public void onClick_prescriptions (View v) {
-        Intent anIntent = new Intent(this, Prescriptions.class);
+        Intent anIntent = new Intent(this, Prescriptions2.class);
         startActivity(anIntent);
     }
 
