@@ -1,6 +1,7 @@
 package xyz.linuskinzel.med44;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
@@ -26,6 +27,26 @@ public class databaseActions {
         OpenHelper.close();
     }
 
+    public Cursor getAllPrescriptionRecords() {
+        return db.query(
+                med44Contract.prescriptions.TABLE_NAME,
+                new String[] {
+                        med44Contract.prescriptions.COLUMN_NAME_DRUG, med44Contract.prescriptions.COLUMN_NAME_DRUG_INFO,
+                        med44Contract.prescriptions.COLUMN_NAME_DATE_PRESCRIBED, med44Contract.prescriptions.COLUMN_NAME_HOW_MANY_DAILY,
+                        med44Contract.prescriptions.COLUMN_NAME_TAKE_FOR_HOW_LONG, med44Contract.prescriptions.COLUMN_NAME_HOW_TAKE_WHEN
+                },
+                null, null, null, null, null);
+    }
+
+
+    public Cursor getPrescriptionRecord(String column) {
+        Cursor mCursor = db.query(med44Contract.prescriptions.TABLE_NAME,
+                new String[] { med44Contract.prescriptions.COLUMN_NAME_DRUG },
+                med44Contract.prescriptions.COLUMN_NAME_DRUG + "=" + column, null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst(); }
+        return mCursor;
+    }
     //examples that can be put here
 
 //    public void insertUsername(String name) {
@@ -70,12 +91,5 @@ public class databaseActions {
 //    }
 
 
-//    public Cursor getRecord(String column) {
-//        Cursor mCursor = db.query(clubtalkContract.userinfo.TABLE_NAME,
-//                new String[] { clubtalkContract.userinfo.COLUMN_NAME_USERNAME },
-//                clubtalkContract.userinfo.COLUMN_NAME_USERNAME + "=" + column, null, null, null, null, null);
-//        if (mCursor != null) {
-//            mCursor.moveToFirst(); }
-//        return mCursor;
-//    }
+
 }

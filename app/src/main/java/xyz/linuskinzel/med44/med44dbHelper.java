@@ -16,41 +16,43 @@ public class med44dbHelper extends SQLiteOpenHelper {
 
     private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA_SEP = ",";
-    private static final String SQL_CREATE_ENTRIES =
+    private static final String SQL_CREATE_VACCINES =
             //// TODO: 26/10/2016 Add correct field types
             "CREATE TABLE " + med44Contract.vaccines.TABLE_NAME + " (" +
                     med44Contract.vaccines._ID + " INTEGER PRIMARY KEY," +
                     med44Contract.vaccines.COLUMN_NAME_VACCINE + TEXT_TYPE + COMMA_SEP +
                     med44Contract.vaccines.COLUMN_NAME_DATE_TAKEN + TEXT_TYPE + COMMA_SEP +
                     med44Contract.vaccines.COLUMN_NAME_GOOD_FOR + TEXT_TYPE +
-                    " );" +
+                    " )";
 
-                    "CREATE TABLE " + med44Contract.prescriptions.TABLE_NAME + " (" +
+    private static final String SQL_CREATE_PRESCRIPTIONS =
+            "CREATE TABLE " + med44Contract.prescriptions.TABLE_NAME + " (" +
                     med44Contract.prescriptions._ID + " INTEGER PRIMARY KEY," +
                     med44Contract.prescriptions.COLUMN_NAME_DRUG + TEXT_TYPE + COMMA_SEP +
                     med44Contract.prescriptions.COLUMN_NAME_DRUG_INFO + TEXT_TYPE + COMMA_SEP +
                     med44Contract.prescriptions.COLUMN_NAME_DATE_PRESCRIBED + TEXT_TYPE + COMMA_SEP +
                     med44Contract.prescriptions.COLUMN_NAME_TAKE_FOR_HOW_LONG + TEXT_TYPE + COMMA_SEP +
                     med44Contract.prescriptions.COLUMN_NAME_HOW_MANY_DAILY + TEXT_TYPE + COMMA_SEP +
-                    med44Contract.prescriptions.COLUMN_NAME_HOW_TAKE_WHEN + TEXT_TYPE + COMMA_SEP +
-                    " );" +
+                    med44Contract.prescriptions.COLUMN_NAME_HOW_TAKE_WHEN + TEXT_TYPE +
+                    " )";
 
-                    "CREATE TABLE " + med44Contract.travels.TABLE_NAME + " (" +
+    private static final String SQL_CREATE_TRAVELS =
+            "CREATE TABLE " + med44Contract.travels.TABLE_NAME + " (" +
                     med44Contract.travels._ID + " INTEGER PRIMARY KEY," +
-                    med44Contract.travels.COLUMN_NAME_COUNTRY + TEXT_TYPE + COMMA_SEP +
-                    " );" +
-
-                    "CREATE TABLE " + med44Contract.doc_visits.TABLE_NAME + " (" +
+                    med44Contract.travels.COLUMN_NAME_COUNTRY + TEXT_TYPE  +
+                    " )";
+    private static final String SQL_CREATE_DOC_VISITS =
+            "CREATE TABLE " + med44Contract.doc_visits.TABLE_NAME + " (" +
                     med44Contract.doc_visits._ID + " INTEGER PRIMARY KEY," +
                     med44Contract.doc_visits.COLUMN_NAME_DIAGNOSED + TEXT_TYPE + COMMA_SEP +
                     med44Contract.doc_visits.COLUMN_NAME_DATE + TEXT_TYPE + COMMA_SEP +
                     med44Contract.doc_visits.COLUMN_NAME_IMAGE + TEXT_TYPE +
-                    " );" +
-
-                    "CREATE TABLE " + med44Contract.med_conditions.TABLE_NAME + " (" +
+                    " )";
+    private static final String SQL_CREATE_MED_CONDITIONS =
+            "CREATE TABLE " + med44Contract.med_conditions.TABLE_NAME + " (" +
                     med44Contract.med_conditions._ID + " INTEGER PRIMARY KEY," +
                     med44Contract.med_conditions.COLUMN_NAME_NAME + TEXT_TYPE + COMMA_SEP +
-                    med44Contract.med_conditions.COLUMN_NAME_DATE_DIAGNOSED + TEXT_TYPE + COMMA_SEP +
+                    med44Contract.med_conditions.COLUMN_NAME_DATE_DIAGNOSED + TEXT_TYPE +
                     " )";
 
 
@@ -65,7 +67,13 @@ public class med44dbHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(SQL_CREATE_ENTRIES);
+
+        db.execSQL(SQL_CREATE_VACCINES);
+        db.execSQL(SQL_CREATE_DOC_VISITS);
+        db.execSQL(SQL_CREATE_MED_CONDITIONS);
+        db.execSQL(SQL_CREATE_PRESCRIPTIONS);
+        db.execSQL(SQL_CREATE_TRAVELS);
+
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //  upgrade policy is to simply to discard the data and start over
