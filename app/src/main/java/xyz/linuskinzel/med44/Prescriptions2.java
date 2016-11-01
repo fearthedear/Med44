@@ -1,11 +1,13 @@
 package xyz.linuskinzel.med44;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -43,6 +46,15 @@ public class Prescriptions2 extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //in between: setting name in navigation drawer
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String name = prefs.getString("name", "no shared preference stored");
+        View header = navigationView.getHeaderView(0);
+        TextView name2 = (TextView) header.findViewById(R.id.name);
+
+        name2.setText(name);
+
 
         dbActions = new databaseActions(this);
 
@@ -76,9 +88,10 @@ public class Prescriptions2 extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        //disabling because I removed settings
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -89,18 +102,21 @@ public class Prescriptions2 extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_userProfile) {
+            Intent anIntent = new Intent(this, UserProfile2.class);
+            startActivity(anIntent);
+        } else if (id == R.id.nav_medhistory) {
+            Intent anIntent = new Intent(this, MedicalHistory.class);
+            startActivity(anIntent);
+        } else if (id == R.id.nav_prescriptions) {
+            Intent anIntent = new Intent(this, Prescriptions2.class);
+            startActivity(anIntent);
+        } else if (id == R.id.nav_vaccines) {
+            Intent anIntent = new Intent(this, Vaccines.class);
+            startActivity(anIntent);
+        } else if (id == R.id.nav_contact) {
+            Intent anIntent = new Intent(this, seeDoctor.class);
+            startActivity(anIntent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -129,4 +145,5 @@ public class Prescriptions2 extends AppCompatActivity
 
         dbActions.close();
     }
+
 }
