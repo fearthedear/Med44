@@ -1,5 +1,6 @@
 package xyz.linuskinzel.med44;
 
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -7,7 +8,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -18,9 +18,27 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Prescriptions2 extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, addPrescriptionFragment.DialogListener {
+
+    // The dialog fragment receives a reference to this Activity through the
+    // Fragment.onAttach() callback, which it uses to call the following methods
+    // defined by the NoticeDialogFragment.NoticeDialogListener interface
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog, int perday, int fordays) {
+        // User touched the dialog's positive button
+        Toast.makeText(this, "Take for days: " + String.valueOf(perday), Toast.LENGTH_LONG).show();
+        //take the data here and write in the database
+        //then reload the activity to display the new prescription
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+        // User touched the dialog's negative button
+        Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +51,7 @@ public class Prescriptions2 extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                addPrescription();
             }
         });
 
@@ -144,6 +161,10 @@ public class Prescriptions2 extends AppCompatActivity
         }
 
         dbActions.close();
+    }
+    public void addPrescription() {
+        DialogFragment newFragment = new addPrescriptionFragment();
+        newFragment.show(getFragmentManager(), "addPrescription");
     }
 
 }
