@@ -28,6 +28,7 @@ public class med44dbHelper extends SQLiteOpenHelper {
                     "CREATE TABLE " + med44Contract.prescriptions.TABLE_NAME + " (" +
                     med44Contract.prescriptions._ID + " INTEGER PRIMARY KEY," +
                     med44Contract.prescriptions.COLUMN_NAME_DRUG + TEXT_TYPE + COMMA_SEP +
+                    med44Contract.prescriptions.COLUMN_NAME_DRUG_INFO + TEXT_TYPE + COMMA_SEP +
                     med44Contract.prescriptions.COLUMN_NAME_DATE_PRESCRIBED + TEXT_TYPE + COMMA_SEP +
                     med44Contract.prescriptions.COLUMN_NAME_TAKE_FOR_HOW_LONG + TEXT_TYPE + COMMA_SEP +
                     med44Contract.prescriptions.COLUMN_NAME_HOW_MANY_DAILY + TEXT_TYPE + COMMA_SEP +

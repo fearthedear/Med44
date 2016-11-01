@@ -14,14 +14,14 @@
         android:layout_weight="5"
         android:orientation="horizontal">
         <TextView
-            android:text="@string/user_profile"
+            android:text="@string/prescriptions"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
             android:id="@+id/userprofileTextview"
             android:background="#363732"
-            android:onClick="onClick_UserProfile"/>
+            android:onClick="onClick_prescriptions"/>
 
         <TextView
             android:text="@string/medical_history"
@@ -51,14 +51,14 @@
             android:onClick="onClick_vaccines"/>
 
         <TextView
-            android:text="@string/prescriptions"
+            android:text="@string/user_profile"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
             android:id="@+id/textViewPrescriptions"
             android:layout_weight="1"
             android:background="#DCE1E9"
-            android:onClick="onClick_prescriptions"/>
+            android:onClick="onClick_UserProfile"/>
 
     </LinearLayout>
     <LinearLayout

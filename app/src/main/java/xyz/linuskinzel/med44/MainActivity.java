@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
 
         String name = prefs.getString("name", "no shared preference stored");
 
-        if (name == "no shared preference stored") {
+        if (name.equals("no shared preference stored")) {
             Intent goToSetup = new Intent(this, setupActivity.class);
             startActivity(goToSetup);
         }

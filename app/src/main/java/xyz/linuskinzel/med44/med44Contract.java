@@ -23,6 +23,7 @@ public final class med44Contract {
     public static class prescriptions implements BaseColumns {
         public static final String TABLE_NAME = "prescriptions";
         public static final String COLUMN_NAME_DRUG = "drug";
+        public static final String COLUMN_NAME_DRUG_INFO = "drug_info";
         public static final String COLUMN_NAME_DATE_PRESCRIBED = "date_prescribed";
         public static final String COLUMN_NAME_TAKE_FOR_HOW_LONG = "take_for_how_long";
         public static final String COLUMN_NAME_HOW_MANY_DAILY = "how_many_daily";
