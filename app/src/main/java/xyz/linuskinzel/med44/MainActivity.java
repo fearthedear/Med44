@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.Window;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -26,9 +25,6 @@ public class MainActivity extends Activity {
         if (name == "no shared preference stored") {
             Intent goToSetup = new Intent(this, setupActivity.class);
             startActivity(goToSetup);
-        }
-        else {
-            Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
         }
     }
 

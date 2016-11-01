@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.Snackbar;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
+import android.widget.Toast;
 
 public class UserProfile extends Activity {
 
@@ -25,10 +27,10 @@ public class UserProfile extends Activity {
         String gender = prefs.getString("gender", "gender not known");
         String blood = prefs.getString("bloodtype", "blood type not known");
 
-        TextView nameTextView = (TextView)findViewById(R.id.nameTextView);
-        TextView ageTextView = (TextView)findViewById(R.id.ageTextView);
-        TextView weightTextView = (TextView)findViewById(R.id.weightTextView);
-        TextView heightTextView = (TextView)findViewById(R.id.heightTextView);
+        EditText nameTextView = (EditText)findViewById(R.id.nameTextView);
+        EditText ageTextView = (EditText)findViewById(R.id.ageTextView);
+        EditText weightTextView = (EditText)findViewById(R.id.weightTextView);
+        EditText heightTextView = (EditText)findViewById(R.id.heightTextView);
 
 
         nameTextView.setText(name);
@@ -59,7 +61,63 @@ public class UserProfile extends Activity {
         else if ("O".equals(blood)) {
             bloodRadio.check(R.id.radioButtonO);
         }
+
+        final View parentLayout = findViewById(R.id.activity_user_profile);
+        Snackbar bar = Snackbar.make(parentLayout, "", Snackbar.LENGTH_INDEFINITE)
+                .setAction("Save Changes", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onClick_saveChanges(parentLayout);
+                    }
+                });
+
+        bar.show();
     }
+
+    public void onClick_saveChanges (View v) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        EditText nameTextView = (EditText)findViewById(R.id.nameTextView);
+        EditText ageTextView = (EditText)findViewById(R.id.ageTextView);
+        EditText weightTextView = (EditText)findViewById(R.id.weightTextView);
+        EditText heightTextView = (EditText)findViewById(R.id.heightTextView);
+
+        String nameStr = nameTextView.getText().toString();
+        int ageInt;
+        try {
+            ageInt = Integer.valueOf(ageTextView.getText().toString());
+        } catch (Exception e) {
+            Toast.makeText(this, "Please enter a valid Age", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Float heightFloat = null;
+        try {
+            heightFloat = Float.valueOf(heightTextView.getText().toString());
+        } catch (Exception e) {
+            Toast.makeText(this, "Please enter a valid height", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Float weightFloat = null;
+        try {
+            weightFloat = Float.valueOf(weightTextView.getText().toString());
+        } catch (Exception e) {
+            Toast.makeText(this, "Please enter a valid weight", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("name", nameStr);
+        editor.putInt("age", ageInt);
+        editor.putFloat("height", heightFloat);
+        editor.putFloat("weight", weightFloat);
+        editor.apply();
+
+        Snackbar.make(v, "Changes saved!", Snackbar.LENGTH_SHORT).show();
+    }
+
 
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
