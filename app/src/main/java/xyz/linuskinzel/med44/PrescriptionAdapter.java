@@ -1,5 +1,6 @@
 package xyz.linuskinzel.med44;
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,10 +21,16 @@ public class PrescriptionAdapter extends RecyclerView.Adapter<PrescriptionAdapte
     // you provide access to all the views for a data item in a view holder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public TextView mTextView;
-        public ViewHolder(TextView v) {
+        public CardView mCardView;
+        public TextView drugnametextview;
+        public TextView forDaystextview;
+        public TextView perdaystextview;
+        public ViewHolder(CardView v) {
             super(v);
-            mTextView = v;
+            mCardView = v;
+            drugnametextview = (TextView) v.findViewById(R.id.drug123);
+            forDaystextview = (TextView) v.findViewById(R.id.fordays);
+            perdaystextview = (TextView) v.findViewById(R.id.howmany);
         }
     }
 
@@ -41,7 +48,7 @@ public class PrescriptionAdapter extends RecyclerView.Adapter<PrescriptionAdapte
                 .inflate(R.layout.prescription_item, parent, false);
         // set the view's size, margins, paddings and layout parameters
 
-        ViewHolder vh = new ViewHolder((TextView)v);
+        ViewHolder vh = new ViewHolder((CardView) v);
         return vh;
     }
 
@@ -51,9 +58,13 @@ public class PrescriptionAdapter extends RecyclerView.Adapter<PrescriptionAdapte
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
 
-        //TODO: make cards looking nice
         String[] temp = mDataset.get(position);
-        holder.mTextView.setText(temp.toString());
+        String drug = temp[0];
+        String fordays = temp[1];
+        String perday = temp[2];
+        holder.drugnametextview.setText(drug);
+        holder.forDaystextview.setText("Take the drug for "+fordays+" days.");
+        holder.perdaystextview.setText("Take "+perday+" pills per day.");
 
     }
 

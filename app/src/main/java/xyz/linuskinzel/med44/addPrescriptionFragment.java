@@ -95,7 +95,7 @@ public class addPrescriptionFragment extends DialogFragment implements NumberPic
                     public void onClick(DialogInterface dialog, int id) {
                         int takedays = perday.getValue();
                         int forrdays = fordays.getValue();
-                        String drug = druginput.toString();
+                        String drug = druginput.getText().toString();
                         mListener.onDialogPositiveClick(addPrescriptionFragment.this, drug, takedays, forrdays);
                     }
                 })

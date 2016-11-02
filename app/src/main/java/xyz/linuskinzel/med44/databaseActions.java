@@ -34,9 +34,8 @@ public class databaseActions {
         return db.query(
                 med44Contract.prescriptions.TABLE_NAME,
                 new String[] {
-                        med44Contract.prescriptions.COLUMN_NAME_DRUG, med44Contract.prescriptions.COLUMN_NAME_DRUG_INFO,
-                        med44Contract.prescriptions.COLUMN_NAME_DATE_PRESCRIBED, med44Contract.prescriptions.COLUMN_NAME_HOW_MANY_DAILY,
-                        med44Contract.prescriptions.COLUMN_NAME_TAKE_FOR_HOW_LONG, med44Contract.prescriptions.COLUMN_NAME_HOW_TAKE_WHEN
+                        med44Contract.prescriptions.COLUMN_NAME_DRUG, med44Contract.prescriptions.COLUMN_NAME_HOW_MANY_DAILY,
+                        med44Contract.prescriptions.COLUMN_NAME_TAKE_FOR_HOW_LONG
                 },
                 null, null, null, null, null);
     }
