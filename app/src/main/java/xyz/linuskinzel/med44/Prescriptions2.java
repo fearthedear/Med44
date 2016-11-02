@@ -139,7 +139,7 @@ public class Prescriptions2 extends AppCompatActivity
             Intent anIntent = new Intent(this, UserProfile2.class);
             startActivity(anIntent);
         } else if (id == R.id.nav_medhistory) {
-            Intent anIntent = new Intent(this, MedicalHistory.class);
+            Intent anIntent = new Intent(this, MedicalHistory2.class);
             startActivity(anIntent);
         } else if (id == R.id.nav_prescriptions) {
             Intent anIntent = new Intent(this, Prescriptions2.class);

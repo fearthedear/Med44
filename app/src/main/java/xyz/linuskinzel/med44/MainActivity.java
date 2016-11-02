@@ -12,8 +12,6 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Remove title bar
-        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
         //check if name is set in sharedpreferences
@@ -33,7 +31,7 @@ public class MainActivity extends Activity {
     }
 
     public void onClick_medicalHistory (View v) {
-        Intent anIntent = new Intent(this, MedicalHistory.class);
+        Intent anIntent = new Intent(this, MedicalHistory2.class);
         startActivity(anIntent);
     }
 

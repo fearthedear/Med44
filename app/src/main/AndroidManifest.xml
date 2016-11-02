@@ -7,7 +7,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@style/testTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,17 +20,20 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_setup"
             android:theme="@style/FullscreenTheme" />
-        <activity android:name=".MedicalHistory" />
         <activity android:name=".Vaccines" />
         <activity android:name=".seeDoctor" />
         <activity
             android:name=".Prescriptions2"
             android:label="@string/title_activity_prescriptions2"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/testTheme" />
         <activity
             android:name=".UserProfile2"
             android:label="@string/title_activity_user_profile2"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/testTheme" />
+        <activity
+            android:name=".MedicalHistory2"
+            android:label="@string/title_activity_medical_history2"
+            android:theme="@style/testTheme" />
     </application>
 
 </manifest>
