@@ -1,5 +1,6 @@
 package xyz.linuskinzel.med44;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -27,6 +28,8 @@ public class databaseActions {
         OpenHelper.close();
     }
 
+
+    //PRESCRIPTION TABLE RELETED FUNCTIONS
     public Cursor getAllPrescriptionRecords() {
         return db.query(
                 med44Contract.prescriptions.TABLE_NAME,
@@ -46,6 +49,17 @@ public class databaseActions {
         if (mCursor != null) {
             mCursor.moveToFirst(); }
         return mCursor;
+    }
+
+    public void insertPrescription(String drug, int perday, int fordays) {
+        ContentValues values = new ContentValues();
+        values.put(med44Contract.prescriptions.COLUMN_NAME_DRUG, drug);
+        values.put(med44Contract.prescriptions.COLUMN_NAME_HOW_MANY_DAILY, perday);
+        values.put(med44Contract.prescriptions.COLUMN_NAME_TAKE_FOR_HOW_LONG, fordays);
+
+        open();
+        long newRowID =  db.insert(med44Contract.prescriptions.TABLE_NAME, null, values);
+        close();
     }
     //examples that can be put here
 

@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.NumberPicker;
 
 /**
@@ -27,7 +28,7 @@ public class addPrescriptionFragment extends DialogFragment implements NumberPic
      * implement this interface in order to receive event callbacks.
      * Each method passes the DialogFragment in case the host needs to query it. */
     public interface DialogListener {
-        public void onDialogPositiveClick(DialogFragment dialog, int perday, int fordays);
+        public void onDialogPositiveClick(DialogFragment dialog, String drug, int perday, int fordays);
         public void onDialogNegativeClick(DialogFragment dialog);
     }
 
@@ -61,6 +62,7 @@ public class addPrescriptionFragment extends DialogFragment implements NumberPic
         // Pass null as the parent view because its going in the dialog layout
         View view = inflater.inflate(R.layout.dialog_add_prescription, null);
 
+        final EditText druginput = (EditText) view.findViewById(R.id.drugInput);
         final NumberPicker perday = (NumberPicker) view.findViewById(R.id.perday);
         final NumberPicker fordays = (NumberPicker) view.findViewById(R.id.fordays);
         //Populate NumberPicker values from minimum and maximum value range
@@ -93,7 +95,8 @@ public class addPrescriptionFragment extends DialogFragment implements NumberPic
                     public void onClick(DialogInterface dialog, int id) {
                         int takedays = perday.getValue();
                         int forrdays = fordays.getValue();
-                        mListener.onDialogPositiveClick(addPrescriptionFragment.this, takedays, forrdays);
+                        String drug = druginput.toString();
+                        mListener.onDialogPositiveClick(addPrescriptionFragment.this, drug, takedays, forrdays);
                     }
                 })
                 .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
