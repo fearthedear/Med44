@@ -15,13 +15,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -37,11 +35,9 @@ public class Prescriptions2 extends AppCompatActivity
     @Override
     public void onDialogPositiveClick(DialogFragment dialog, String med, int perday, int fordays) {
         // User touched the dialog's positive button
-        Toast.makeText(this, "Take for days: " + String.valueOf(perday), Toast.LENGTH_LONG).show();
 
         dbActions = new databaseActions(this);
         dbActions.open();
-        Log.i("Test", "inserted drug ="+med);
         dbActions.insertPrescription(med, perday, fordays);
 
         //restarting activity so new prescription is loaded
@@ -52,7 +48,6 @@ public class Prescriptions2 extends AppCompatActivity
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
         // User touched the dialog's negative button
-        Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
     }
 
     @Override

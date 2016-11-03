@@ -144,17 +144,6 @@
                 </TableRow>
             </TableLayout>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="Blood Type"
-                android:ems="10"
-                android:background="@color/white"
-                android:id="@+id/editText6"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"/>
-
             <Button
                 android:text="Continue"
                 android:layout_width="match_parent"

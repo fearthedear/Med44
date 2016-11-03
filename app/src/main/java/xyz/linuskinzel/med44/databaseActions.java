@@ -60,8 +60,42 @@ public class databaseActions {
         long newRowID =  db.insert(med44Contract.prescriptions.TABLE_NAME, null, values);
         close();
     }
-    //examples that can be put here
 
+
+    //CONDTIONS RELATED DATABASE ACTIONS
+    public Cursor getAllConditionRecords() {
+        return db.query(
+                med44Contract.med_conditions.TABLE_NAME,
+                new String[] {
+                        med44Contract.med_conditions.COLUMN_NAME_NAME, med44Contract.med_conditions.COLUMN_NAME_DATE_DIAGNOSED
+                },
+                null, null, null, null, null);
+    }
+
+    public void insertCondition(String condition, String date) {
+        ContentValues values = new ContentValues();
+        values.put(med44Contract.med_conditions.COLUMN_NAME_NAME, condition);
+        values.put(med44Contract.med_conditions.COLUMN_NAME_DATE_DIAGNOSED, date);
+
+        open();
+        long newRowID = db.insert(med44Contract.med_conditions.TABLE_NAME, null, values);
+    }
+
+
+    //VISITS RELATED DATABASE ACTIONS
+    public Cursor getAllVisits() {
+        return db.query(
+                med44Contract.doc_visits.TABLE_NAME,
+                new String[]{
+                        med44Contract.doc_visits.COLUMN_NAME_DATE, med44Contract.doc_visits.COLUMN_NAME_DIAGNOSED,
+                        med44Contract.doc_visits.COLUMN_NAME_IMAGE
+                },
+                null, null, null, null, null);
+    }
+
+}
+
+//examples that can be put here
 //    public void insertUsername(String name) {
 //        //Toast.makeText(context, "chill", Toast.LENGTH_LONG).show();
 //        // Create a new map of values, where column names are the keys
@@ -102,7 +136,3 @@ public class databaseActions {
 //                },
 //                null, null, null, null, null);
 //    }
-
-
-
-}

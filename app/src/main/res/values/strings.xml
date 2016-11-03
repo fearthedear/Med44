@@ -12,6 +12,8 @@
     <string name="please_enter_the_information_below">Please enter the information below.</string>
     <string name="welcome_to_med44">Welcome to MED44!</string>
     <string name="noPrescriptions">It looks like you don\'t have any prescriptions. Great! \nShould your doctor have given you one, though, add it with the button below. It will remind you to take and provide general information.</string>
+    <string name="noConditions">It looks like you haven\'t added any medical conditions. Add them when diagnosed to help doctors identify conditions faster!</string>
+    <string name="noVisits">It looks like you haven\'t added any visits at the Doctor yet. Make sure to add after your next visit! It will make future diagnosis easier.</string>
     <string-array name="gender_array">
         <item>Male</item>
         <item>Female</item>

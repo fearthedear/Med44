@@ -20,7 +20,7 @@
             android:title="You" />
     </group>
 
-    <item android:title="">
+    <item android:title="More">
         <menu>
             <item
                 android:id="@+id/nav_contact"

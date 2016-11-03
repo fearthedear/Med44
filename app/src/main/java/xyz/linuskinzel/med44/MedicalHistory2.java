@@ -1,5 +1,6 @@
 package xyz.linuskinzel.med44;
 
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,10 +20,32 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MedicalHistory2 extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, addConditionFragment.DialogListener {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+
+    databaseActions dbActions;
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog, String condition, String date) {
+        // User touched the dialog's positive button
+
+        dbActions = new databaseActions(this);
+        dbActions.open();
+        dbActions.insertCondition(condition, date);
+
+        //restarting activity so new prescription is loaded
+        Intent myIntent = new Intent(this, MedicalHistory2.class);
+        startActivity(myIntent);
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+        // User touched the dialog's negative button
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,9 +114,9 @@ public class MedicalHistory2 extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
