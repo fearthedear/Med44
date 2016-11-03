@@ -14,15 +14,14 @@ import android.widget.EditText;
  * Created by linus on 04/11/2016.
  */
 
-public class addConditionFragment extends DialogFragment {
-
-    public interface DialogListener {
-        public void onDialogPositiveClick(DialogFragment dialog, String condition, String date, String identifier);
+public class addVisitFragment extends DialogFragment {
+    public interface DialogListener2 {
+        public void onDialogPositiveClick(DialogFragment dialog, String condition, String date, String image);
         public void onDialogNegativeClick(DialogFragment dialog);
     }
 
     // Use this instance of the interface to deliver action events
-    DialogListener mListener;
+    addVisitFragment.DialogListener2 mListener;
 
     // Override the Fragment.onAttach() method to instantiate the NoticeDialogListener
     @Override
@@ -31,7 +30,7 @@ public class addConditionFragment extends DialogFragment {
         // Verify that the host activity implements the callback interface
         try {
             // Instantiate the NoticeDialogListener so we can send events to the host
-            mListener = (addConditionFragment.DialogListener) activity;
+            mListener = (addVisitFragment.DialogListener2) activity;
         } catch (ClassCastException e) {
             // The activity doesn't implement the interface, throw exception
             throw new ClassCastException(activity.toString()
@@ -49,25 +48,26 @@ public class addConditionFragment extends DialogFragment {
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
-        View view = inflater.inflate(R.layout.dialog_add_condition, null);
+        View view = inflater.inflate(R.layout.dialog_add_visit, null);
 
-        final EditText conditioninput = (EditText) view.findViewById(R.id.conditionInput);
+        final EditText diagnosis = (EditText) view.findViewById(R.id.visitDiagnosis);
         final EditText diagnosed_date_input = (EditText) view.findViewById(R.id.diagnosed_date_input);
-
+        //// TODO: 04/11/2016 Process image here
+        final EditText image1 = (EditText) view.findViewById(R.id.imageInput);
 
         builder.setView(view)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        String condition = conditioninput.getText().toString();
+                        String condition = diagnosis.getText().toString();
                         String date = diagnosed_date_input.getText().toString();
-                        String identifier = "condition"; //very unclean. passing a fake argument here from I tell in the activity which dialog it is.
-                        mListener.onDialogPositiveClick(addConditionFragment.this, condition, date, identifier);
+                        String image = image1.getText().toString();
+                        mListener.onDialogPositiveClick(addVisitFragment.this, condition, date, image);
                     }
                 })
                 .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
-                        mListener.onDialogNegativeClick(addConditionFragment.this);
+                        mListener.onDialogNegativeClick(addVisitFragment.this);
                     }
                 });
         // Create the AlertDialog object and return it

@@ -108,7 +108,7 @@ public class conditionsFragment extends Fragment {
 
     public void addCondition() {
         DialogFragment newFragment = new addConditionFragment();
-        newFragment.show(getActivity().getFragmentManager(), "addPrescription");
+        newFragment.show(getActivity().getFragmentManager(), "addCondition");
     }
 
 }

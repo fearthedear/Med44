@@ -1,11 +1,12 @@
 package xyz.linuskinzel.med44;
 
 
+import android.app.DialogFragment;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,8 +55,7 @@ public class visitsFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                addVisit();
             }
         });
 
@@ -65,25 +65,25 @@ public class visitsFragment extends Fragment {
     public void is_empty(View view) {
         dbActions = new databaseActions(getActivity());
         dbActions.open();
-        Cursor cursor = dbActions.getAllConditionRecords();
+        Cursor cursor = dbActions.getAllVisits();
         ArrayList<String[]> records = new ArrayList<String[]>();
 
         if (cursor.moveToFirst()) {
-//            do {
-//                String[] record = {cursor.getString(0),cursor.getString(1),cursor.getString(2)};
-//                records.add(record);
-//            }
-//            while (cursor.moveToNext());
-//
-//            mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-//
-//            // use a linear layout manager
-//            mLayoutManager = new LinearLayoutManager(this);
-//            mRecyclerView.setLayoutManager(mLayoutManager);
-//
-//            // specify an adapter (see also next example)
-//            mAdapter = new PrescriptionAdapter(records);
-//            mRecyclerView.setAdapter(mAdapter);
+            do {
+                String[] record = {cursor.getString(0),cursor.getString(1),cursor.getString(2)};
+                records.add(record);
+            }
+            while (cursor.moveToNext());
+
+            mRecyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
+
+            // use a linear layout manager
+            mLayoutManager = new LinearLayoutManager(getContext());
+            mRecyclerView.setLayoutManager(mLayoutManager);
+
+            // specify an adapter (see also next example)
+            mAdapter = new visitsAdapter(records);
+            mRecyclerView.setAdapter(mAdapter);
         }
         else {
             View relativeLayout =  view.findViewById(R.id.visitsparent);
@@ -99,5 +99,10 @@ public class visitsFragment extends Fragment {
         }
 
         dbActions.close();
+    }
+
+    public void addVisit() {
+        DialogFragment newFragment = new addVisitFragment();
+        newFragment.show(getActivity().getFragmentManager(), "addVisit");
     }
 }

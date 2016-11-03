@@ -93,6 +93,16 @@ public class databaseActions {
                 null, null, null, null, null);
     }
 
+    public void insertVisit(String date, String diagnosed, String image) {
+        ContentValues values = new ContentValues();
+        values.put(med44Contract.doc_visits.COLUMN_NAME_DATE, date);
+        values.put(med44Contract.doc_visits.COLUMN_NAME_DIAGNOSED, diagnosed);
+        values.put(med44Contract.doc_visits.COLUMN_NAME_IMAGE, image);
+
+        open();
+        long newRowID = db.insert(med44Contract.doc_visits.TABLE_NAME, null, values);
+    }
+
 }
 
 //examples that can be put here
