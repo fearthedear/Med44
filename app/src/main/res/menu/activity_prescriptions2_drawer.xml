@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <!--THIS IS NOT USED! ALL ACTIVITIES SHOULD USE activity_user_profile2_drawer.xml as drawer resource!-->
-    <!--Set it in the main activit_____.xml file-->
-</menu>

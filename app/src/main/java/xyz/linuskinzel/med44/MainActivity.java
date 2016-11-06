@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
     }
 
     public void onClick_vaccines (View v) {
-        Intent anIntent = new Intent(this, Vaccines.class);
+        Intent anIntent = new Intent(this, Vaccines2.class);
         startActivity(anIntent);
     }
 

@@ -148,10 +148,13 @@ public class UserProfile2 extends AppCompatActivity
             Intent anIntent = new Intent(this, Prescriptions2.class);
             startActivity(anIntent);
         } else if (id == R.id.nav_vaccines) {
-            Intent anIntent = new Intent(this, Vaccines.class);
+            Intent anIntent = new Intent(this, Vaccines2.class);
             startActivity(anIntent);
         } else if (id == R.id.nav_contact) {
             Intent anIntent = new Intent(this, seeDoctor.class);
+            startActivity(anIntent);
+        } else if (id == R.id.nav_about) {
+            Intent anIntent = new Intent(this, About.class);
             startActivity(anIntent);
         }
 

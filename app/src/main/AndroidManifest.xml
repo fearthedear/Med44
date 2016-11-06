@@ -20,7 +20,6 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_setup"
             android:theme="@style/FullscreenTheme" />
-        <activity android:name=".Vaccines" />
         <activity android:name=".seeDoctor" />
         <activity
             android:name=".Prescriptions2"
@@ -34,6 +33,24 @@
             android:name=".MedicalHistory2"
             android:label="@string/title_activity_medical_history2"
             android:theme="@style/testTheme" />
+        <activity
+            android:name=".About"
+            android:label="@string/title_activity_about"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/testTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="xyz.linuskinzel.med44.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Vaccines2"
+            android:label="@string/title_activity_vaccines2"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/testTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="xyz.linuskinzel.med44.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
