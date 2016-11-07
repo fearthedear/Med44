@@ -21,6 +21,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
+
 import static java.lang.String.valueOf;
 
 public class UserProfile2 extends AppCompatActivity
@@ -33,7 +35,6 @@ public class UserProfile2 extends AppCompatActivity
         setContentView(R.layout.activity_user_profile2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("You");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -60,8 +61,9 @@ public class UserProfile2 extends AppCompatActivity
 
         //calculate and set bmi
         TextView bmiTextView = (TextView) findViewById(R.id.bmi);
-        String bmi = valueOf(weight/(height*height)*10000);
-        bmiTextView.setText(bmi);
+        float bmi = round(weight/(height*height)*10000,2);
+        String bmistr = valueOf(bmi);
+        bmiTextView.setText(bmistr);
 
         //in between: setting name in navigation drawer
         View header = navigationView.getHeaderView(0);
@@ -183,6 +185,7 @@ public class UserProfile2 extends AppCompatActivity
         EditText ageTextView = (EditText)findViewById(R.id.ageTextView);
         EditText weightTextView = (EditText)findViewById(R.id.weightTextView);
         EditText heightTextView = (EditText)findViewById(R.id.heightTextView);
+        TextView bmiTextView = (TextView) findViewById(R.id.bmi);
 
         String nameStr = nameTextView.getText().toString();
         int ageInt;
@@ -218,13 +221,11 @@ public class UserProfile2 extends AppCompatActivity
         editor.apply();
 
         //calculate and set bmi
-        TextView bmiTextView = (TextView) findViewById(R.id.bmi);
-        String bmi = valueOf(weightFloat/(heightFloat*heightFloat)*10000);
-        bmiTextView.setText(bmi);
+        float bmi = round(weightFloat/(heightFloat*heightFloat)*10000,2);
+        String bmistr = valueOf(bmi);
+        bmiTextView.setText(bmistr);
 
         Snackbar.make(v, "Changes saved!", Snackbar.LENGTH_SHORT).show();
-
-        // TODO: 06/11/2016 MAKE SNACKBAR FOR SAVING REAPPEEAR AFTER A FEW SECONDS
 
         mHandler.postDelayed(new Runnable() {
             public void run() {
@@ -252,8 +253,6 @@ public class UserProfile2 extends AppCompatActivity
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
 
-        // Check which radio button was clicked
-        // TODO: 29/10/2016 save clicked button to sharedpreferences
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         switch(view.getId()) {
@@ -300,5 +299,10 @@ public class UserProfile2 extends AppCompatActivity
                 }
                 break;
         }
+    }
+    public static float round(float d, int decimalPlace) {
+        BigDecimal bd = new BigDecimal(Float.toString(d));
+        bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
+        return bd.floatValue();
     }
 }

@@ -52,13 +52,13 @@ public class visitsAdapter extends RecyclerView.Adapter<visitsAdapter.ViewHolder
         // - replace the contents of the view with that element
 
         String[] temp = mDataset.get(position);
-        String name = temp[0];
-        String diagnosed = temp[1];
+        String name = temp[1];
+        String diagnosed = temp[0];
         String image1 = temp[2];
 
 
         holder.conditionName.setText(name);
-        holder.diagnosedDate.setText("Diagnosed on "+diagnosed);
+        holder.diagnosedDate.setText("Diagnosed: "+diagnosed);
         holder.image1.setText("Image you added: "+image1);
 
     }

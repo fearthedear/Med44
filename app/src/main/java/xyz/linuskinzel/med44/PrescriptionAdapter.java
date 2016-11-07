@@ -60,8 +60,8 @@ public class PrescriptionAdapter extends RecyclerView.Adapter<PrescriptionAdapte
 
         String[] temp = mDataset.get(position);
         String drug = temp[0];
-        String fordays = temp[1];
-        String perday = temp[2];
+        String fordays = temp[2];
+        String perday = temp[1];
         holder.drugnametextview.setText(drug);
         holder.forDaystextview.setText("Take the drug for "+fordays+" days.");
         holder.perdaystextview.setText("Take "+perday+" pills per day.");
