@@ -68,7 +68,7 @@ public class Vaccines2 extends AppCompatActivity
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 String country = parentView.getAdapter().getItem(position).toString();
 
-                if ("".equals(country)) {
+                if ("Select Country".equals(country)) {
                     return;
                 }
                 else {

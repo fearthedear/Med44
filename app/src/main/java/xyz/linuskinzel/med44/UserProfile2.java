@@ -3,6 +3,7 @@ package xyz.linuskinzel.med44;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -24,6 +25,7 @@ import static java.lang.String.valueOf;
 
 public class UserProfile2 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private Handler mHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,7 @@ public class UserProfile2 extends AppCompatActivity
 
         //calculate and set bmi
         TextView bmiTextView = (TextView) findViewById(R.id.bmi);
-        String bmi = valueOf(height/weight);
+        String bmi = valueOf(weight/(height*height)*10000);
         bmiTextView.setText(bmi);
 
         //in between: setting name in navigation drawer
@@ -224,16 +226,25 @@ public class UserProfile2 extends AppCompatActivity
 
         // TODO: 06/11/2016 MAKE SNACKBAR FOR SAVING REAPPEEAR AFTER A FEW SECONDS
 
-//        final View parentLayout = findViewById(R.id.content_user_profile2);
-//        Snackbar bar = Snackbar.make(parentLayout, "", Snackbar.LENGTH_INDEFINITE)
-//                .setAction("Save Changes", new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        onClick_saveChanges(parentLayout);
-//                    }
-//                });
-//
-//        bar.show();
+        mHandler.postDelayed(new Runnable() {
+            public void run() {
+                showSnackbar();
+            }
+        }, 5000);
+
+    }
+
+    public void showSnackbar() {
+        final View parentLayout = findViewById(R.id.content_user_profile2);
+        Snackbar bar = Snackbar.make(parentLayout, "", Snackbar.LENGTH_INDEFINITE)
+                .setAction("Save Changes", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onClick_saveChanges(parentLayout);
+                    }
+                });
+
+        bar.show();
     }
 
 

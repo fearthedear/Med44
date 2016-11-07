@@ -36,7 +36,7 @@
     <string name="title_activity_medical_history2">MedicalHistory2</string>
 
     <string-array name="countries_array">
-        <item></item>
+        <item>Select Country</item>
         <item>Malaysia</item>
         <item>Thailand</item>
         <item>Philippines</item>

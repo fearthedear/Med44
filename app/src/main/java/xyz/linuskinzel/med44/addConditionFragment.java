@@ -43,7 +43,7 @@ public class addConditionFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Add a Visit");
+        builder.setTitle("Add a Condition");
         // Get the layout inflater
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
