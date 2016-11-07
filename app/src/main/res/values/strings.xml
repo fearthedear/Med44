@@ -4,7 +4,7 @@
     <string name="prescriptions">Prescriptions</string>
     <string name="vaccines">Vaccines</string>
     <string name="medical_history">Medical History</string>
-    <string name="user_profile">User Profile</string>
+    <string name="user_profile">Personal Details</string>
 
     <string name="title_activity_setup">setupActivity</string>
     <string name="dummy_button">Dummy Button</string>

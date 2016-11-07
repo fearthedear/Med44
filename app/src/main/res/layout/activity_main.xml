@@ -13,25 +13,54 @@
         android:layout_height="0dp"
         android:layout_weight="5"
         android:orientation="horizontal">
-        <TextView
-            android:text="@string/prescriptions"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:id="@+id/userprofileTextview"
-            android:background="#363732"
-            android:onClick="onClick_prescriptions"/>
 
-        <TextView
-            android:text="@string/medical_history"
+        <RelativeLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:id="@+id/medicalhistoryTextview"
             android:layout_weight="1"
-            android:background="#53D8FB"
-            android:onClick="onClick_medicalHistory"/>
+            android:layout_height="match_parent"
+            android:onClick="onClick_prescriptions">
+            <ImageView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:src="@drawable/prescriptions"
+                android:scaleType="centerCrop"/>
+            <TextView
+                android:id="@+id/userprofileTextview"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/prescriptions"
+                android:background="@color/black50percent"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:onClick="onClick_medicalHistory">
+            <ImageView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:src="@drawable/medhistory"
+                android:scaleType="centerCrop"/>
+            <TextView
+                android:id="@+id/medicalhistoryTextview"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/medical_history"
+                android:background="@color/black50percent"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
+        </RelativeLayout>
 
     </LinearLayout>
 
@@ -40,25 +69,53 @@
         android:layout_height="0dp"
         android:layout_weight="3"
         android:orientation="horizontal">
-        <TextView
-            android:text="@string/vaccines"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:layout_height="match_parent"
-            android:id="@+id/textViewVaccines"
-            android:background="#66C3FF"
-            android:onClick="onClick_vaccines"/>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:onClick="onClick_vaccines">
+                <ImageView
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:src="@drawable/vaccines"
+                    android:scaleType="centerCrop"/>
+                <TextView
+                    android:id="@+id/textViewVaccines"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/vaccines"
+                    android:background="@color/black50percent"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"/>
+            </RelativeLayout>
 
-        <TextView
-            android:text="@string/user_profile"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:id="@+id/textViewPrescriptions"
-            android:layout_weight="1"
-            android:background="#DCE1E9"
-            android:onClick="onClick_UserProfile"/>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:onClick="onClick_UserProfile">
+                <ImageView
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:src="@drawable/userprofile"
+                    android:scaleType="centerCrop"/>
+                <TextView
+                    android:id="@+id/textViewPrescriptions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/user_profile"
+                    android:background="@color/black50percent"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"/>
+            </RelativeLayout>
 
     </LinearLayout>
     <LinearLayout
@@ -66,14 +123,28 @@
         android:layout_height="0dp"
         android:layout_weight="2"
         android:orientation="horizontal">
-        <TextView
-            android:text="@string/contact"
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
             android:layout_height="match_parent"
-            android:id="@+id/textViewContact"
-            android:background="#D4AFB9"
-            android:onClick="onClick_seeDoctor"/>
+            android:onClick="onClick_seeDoctor">
+            <ImageView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:src="@drawable/contact"
+                android:scaleType="centerCrop"/>
+            <TextView
+                android:id="@+id/textViewContact"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/contact"
+                android:background="@color/black50percent"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

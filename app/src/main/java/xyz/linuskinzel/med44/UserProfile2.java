@@ -217,7 +217,7 @@ public class UserProfile2 extends AppCompatActivity
 
         //calculate and set bmi
         TextView bmiTextView = (TextView) findViewById(R.id.bmi);
-        String bmi = valueOf(heightFloat/weightFloat);
+        String bmi = valueOf(weightFloat/(heightFloat*heightFloat)*10000);
         bmiTextView.setText(bmi);
 
         Snackbar.make(v, "Changes saved!", Snackbar.LENGTH_SHORT).show();
