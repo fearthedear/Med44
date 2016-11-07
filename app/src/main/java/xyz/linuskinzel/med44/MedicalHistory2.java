@@ -125,7 +125,8 @@ public class MedicalHistory2 extends AppCompatActivity
         if (id == R.id.nav_userProfile) {
             Intent anIntent = new Intent(this, UserProfile2.class);
             startActivity(anIntent);
-        } else if (id == R.id.nav_medhistory) {
+        }
+        else if (id == R.id.nav_medhistory) {
             Intent anIntent = new Intent(this, MedicalHistory2.class);
             startActivity(anIntent);
         } else if (id == R.id.nav_prescriptions) {
@@ -139,6 +140,9 @@ public class MedicalHistory2 extends AppCompatActivity
             startActivity(anIntent);
         } else if (id == R.id.nav_about) {
             Intent anIntent = new Intent(this, About.class);
+            startActivity(anIntent);
+        } else if (id == R.id.nav_main_menu) {
+            Intent anIntent = new Intent(this, MainActivity.class);
             startActivity(anIntent);
         }
 

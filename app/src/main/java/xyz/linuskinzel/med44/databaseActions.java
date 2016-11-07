@@ -103,7 +103,18 @@ public class databaseActions {
         long newRowID = db.insert(med44Contract.doc_visits.TABLE_NAME, null, values);
     }
 
+    //VACCINES RELATED DATABASE ACTIONS
+    public Cursor getVaccinesByCountry(String country) {
+        String[] args = { country };
+        return db.query(
+                med44Contract.vaccines.TABLE_NAME,
+                new String[]{
+                        med44Contract.vaccines.COLUMN_NAME_VACCINES_REQUIRED,
+                },
+                "country=?", args, null, null, null);
+        }
 }
+
 
 //examples that can be put here
 //    public void insertUsername(String name) {

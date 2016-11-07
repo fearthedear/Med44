@@ -148,6 +148,9 @@ public class Prescriptions2 extends AppCompatActivity
         } else if (id == R.id.nav_about) {
             Intent anIntent = new Intent(this, About.class);
             startActivity(anIntent);
+        } else if (id == R.id.nav_main_menu) {
+            Intent anIntent = new Intent(this, MainActivity.class);
+            startActivity(anIntent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

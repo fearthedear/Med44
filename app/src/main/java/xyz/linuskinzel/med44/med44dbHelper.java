@@ -20,9 +20,8 @@ public class med44dbHelper extends SQLiteOpenHelper {
             //// TODO: 26/10/2016 Add correct field types
             "CREATE TABLE " + med44Contract.vaccines.TABLE_NAME + " (" +
                     med44Contract.vaccines._ID + " INTEGER PRIMARY KEY," +
-                    med44Contract.vaccines.COLUMN_NAME_VACCINE + TEXT_TYPE + COMMA_SEP +
-                    med44Contract.vaccines.COLUMN_NAME_DATE_TAKEN + TEXT_TYPE + COMMA_SEP +
-                    med44Contract.vaccines.COLUMN_NAME_GOOD_FOR + TEXT_TYPE +
+                    med44Contract.vaccines.COLUMN_NAME_COUNTRY + TEXT_TYPE + COMMA_SEP +
+                    med44Contract.vaccines.COLUMN_NAME_VACCINES_REQUIRED + TEXT_TYPE +
                     " )";
 
     private static final String SQL_CREATE_PRESCRIPTIONS =
@@ -63,6 +62,18 @@ public class med44dbHelper extends SQLiteOpenHelper {
                     "DROP TABLE IF EXISTS " + med44Contract.doc_visits.TABLE_NAME + ";" +
                     "DROP TABLE IF EXISTS " + med44Contract.med_conditions.TABLE_NAME;
 
+    private static final String SQL_INSERT_VACCINES =
+            "INSERT INTO " + med44Contract.vaccines.TABLE_NAME +
+            "(" + med44Contract.vaccines.COLUMN_NAME_COUNTRY + COMMA_SEP +
+                    med44Contract.vaccines.COLUMN_NAME_VACCINES_REQUIRED + ")" +
+                    "VALUES ('Malaysia','Routine Vaccinations: MMR, DTaP\nMost Travellers: Typhoid, Hepatitis A\nSome Travellers: Hepatitis B, Rabies, Cholera and Japanese Encephalitis')"
+                        + COMMA_SEP + "('Thailand','Routine Vaccinations: MMR, DTaP\nMost Travellers: Typhoid, Hepatitis A\nSome Travellers: Hepatitis B, Rabies, Cholera and Japanese Encephalitis')"
+                        + COMMA_SEP + "('Philippines','Routine Vaccinations: MMR, DTaP\nMost Travellers: Typhoid, Hepatitis A\nSome Travellers: Hepatitis B, Rabies, Cholera and Japanese Encephalitis')"
+                        + COMMA_SEP + "('Indonesia','Routine Vaccinations: MMR, DTaP\nMost Travellers: Typhoid, Hepatitis A\nSome Travellers: Hepatitis B, Rabies, Cholera and Japanese Encephalitis')"
+                        + COMMA_SEP + "('China','Routine Vaccinations: MMR, DTaP\nMost Travellers: Typhoid, Hepatitis A\nSome Travellers: Hepatitis B, Rabies, Cholera, Yellow Fever, Tick-Borne Encephalitis and Japanese Encephalitis')";
+
+
+
     public med44dbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -73,6 +84,7 @@ public class med44dbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_MED_CONDITIONS);
         db.execSQL(SQL_CREATE_PRESCRIPTIONS);
         db.execSQL(SQL_CREATE_TRAVELS);
+        db.execSQL(SQL_INSERT_VACCINES);
 
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

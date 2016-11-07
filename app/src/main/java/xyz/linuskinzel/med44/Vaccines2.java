@@ -2,6 +2,7 @@ package xyz.linuskinzel.med44;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
@@ -13,12 +14,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Vaccines2 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    databaseActions dbActions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +54,45 @@ public class Vaccines2 extends AppCompatActivity
         //setting up spinner
         Spinner spinner = (Spinner) findViewById(R.id.country_spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.countries_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                String country = parentView.getAdapter().getItem(position).toString();
+
+                if ("".equals(country)) {
+                    return;
+                }
+                else {
+                    dbActions = new databaseActions(getApplicationContext());
+                    dbActions.open();
+                    Cursor vaccs = dbActions.getVaccinesByCountry(country);
+
+                    if (vaccs.moveToFirst()) {
+                        String countries = vaccs.getString(0);
+                        TextView vaccsview = (TextView) findViewById(R.id.vaccs);
+                        vaccsview.setText(countries);
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "Retrieval failed. Try again", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+
+            }
+        });
     }
 
     @Override
@@ -109,6 +147,9 @@ public class Vaccines2 extends AppCompatActivity
         } else if (id == R.id.nav_about) {
             Intent anIntent = new Intent(this, About.class);
             startActivity(anIntent);
+        } else if (id == R.id.nav_main_menu) {
+            Intent anIntent = new Intent(this, MainActivity.class);
+            startActivity(anIntent);
         }
 
 
@@ -117,17 +158,4 @@ public class Vaccines2 extends AppCompatActivity
         return true;
     }
 
-    Spinner spinner = (Spinner)findViewById(R.id.country_spinner);
-    spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-        @Override
-        public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-            // your code here
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> parentView) {
-            // your code here
-        }
-
-    });
 }

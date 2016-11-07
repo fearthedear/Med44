@@ -14,9 +14,8 @@ public final class med44Contract {
     /* Inner class that defines the table contents */
     public static class vaccines implements BaseColumns {
         public static final String TABLE_NAME = "vaccines";
-        public static final String COLUMN_NAME_VACCINE = "vaccine";
-        public static final String COLUMN_NAME_DATE_TAKEN = "date_taken";
-        public static final String COLUMN_NAME_GOOD_FOR = "good_for"; //means expires at, renew or sth like this
+        public static final String COLUMN_NAME_COUNTRY = "country";
+        public static final String COLUMN_NAME_VACCINES_REQUIRED = "vaccines_required";
     }
 
     /* Inner class that defines the table contents */

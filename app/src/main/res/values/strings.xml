@@ -41,6 +41,7 @@
         <item>Thailand</item>
         <item>Philippines</item>
         <item>Indonesia</item>
+        <item>China</item>
     </string-array>
     <string name="title_activity_about">About</string>
     <string name="title_activity_vaccines2">Vaccines2</string>
