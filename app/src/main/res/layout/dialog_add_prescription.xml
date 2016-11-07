@@ -25,7 +25,9 @@
                 android:text="How many per day?"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
-                android:layout_weight="7"/>
+                android:layout_weight="7"
+                android:layout_gravity="center_vertical"
+                android:textSize="18sp"/>
             <NumberPicker
                 android:id="@+id/perday"
                 android:layout_height="wrap_content"
@@ -37,7 +39,9 @@
                 android:text="For how many days?"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
-                android:layout_weight="7"/>
+                android:layout_weight="7"
+                android:layout_gravity="center_vertical"
+                android:textSize="18sp"/>
             <NumberPicker
                 android:id="@+id/fordays"
                 android:layout_height="wrap_content"
