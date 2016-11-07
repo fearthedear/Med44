@@ -13,4 +13,16 @@
     tools:context="xyz.linuskinzel.med44.Vaccines2"
     tools:showIn="@layout/app_bar_vaccines2">
 
+    <TextView
+        android:id="@+id/vacinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Are you traveling soon? Select your destination country below and a list of recommended vaccinations will be displayed. More countries will be added soon."/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:id="@+id/country_spinner"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vacinfo"
+        android:layout_marginTop="20dp"/>
 </RelativeLayout>

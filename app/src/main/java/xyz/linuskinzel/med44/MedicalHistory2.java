@@ -135,7 +135,7 @@ public class MedicalHistory2 extends AppCompatActivity
             Intent anIntent = new Intent(this, Vaccines2.class);
             startActivity(anIntent);
         } else if (id == R.id.nav_contact) {
-            Intent anIntent = new Intent(this, seeDoctor.class);
+            Intent anIntent = new Intent(this, seeDoctor2.class);
             startActivity(anIntent);
         } else if (id == R.id.nav_about) {
             Intent anIntent = new Intent(this, About.class);

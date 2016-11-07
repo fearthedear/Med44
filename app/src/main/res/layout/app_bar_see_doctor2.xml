@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="xyz.linuskinzel.med44.MedicalHistory2">
+    tools:context="xyz.linuskinzel.med44.seeDoctor2">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -18,10 +18,11 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/PopupOverlay"
-            app:title="Your Medical History"/>
+            app:title="Find a doctor"/>
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_medical_history2" />
+    <include layout="@layout/content_see_doctor2" />
+
 
 </android.support.design.widget.CoordinatorLayout>

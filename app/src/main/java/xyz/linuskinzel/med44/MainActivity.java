@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
     }
 
     public void onClick_seeDoctor (View v) {
-        Intent anIntent = new Intent(this, seeDoctor.class);
+        Intent anIntent = new Intent(this, seeDoctor2.class);
         startActivity(anIntent);
     }
 }

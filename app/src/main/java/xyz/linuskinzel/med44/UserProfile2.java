@@ -20,6 +20,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static java.lang.String.valueOf;
+
 public class UserProfile2 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -29,6 +31,7 @@ public class UserProfile2 extends AppCompatActivity
         setContentView(R.layout.activity_user_profile2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setTitle("You");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -53,6 +56,11 @@ public class UserProfile2 extends AppCompatActivity
         EditText weightTextView = (EditText)findViewById(R.id.weightTextView);
         EditText heightTextView = (EditText)findViewById(R.id.heightTextView);
 
+        //calculate and set bmi
+        TextView bmiTextView = (TextView) findViewById(R.id.bmi);
+        String bmi = valueOf(height/weight);
+        bmiTextView.setText(bmi);
+
         //in between: setting name in navigation drawer
         View header = navigationView.getHeaderView(0);
         TextView name2 = (TextView) header.findViewById(R.id.name);
@@ -60,8 +68,8 @@ public class UserProfile2 extends AppCompatActivity
 
         nameTextView.setText(name);
         ageTextView.setText(Integer.toString(age));
-        weightTextView.setText(String.valueOf(weight));
-        heightTextView.setText(String.valueOf(height));
+        weightTextView.setText(valueOf(weight));
+        heightTextView.setText(valueOf(height));
 
 
         RadioGroup genderRadio = (RadioGroup)findViewById(R.id.genderRadio);
@@ -151,7 +159,7 @@ public class UserProfile2 extends AppCompatActivity
             Intent anIntent = new Intent(this, Vaccines2.class);
             startActivity(anIntent);
         } else if (id == R.id.nav_contact) {
-            Intent anIntent = new Intent(this, seeDoctor.class);
+            Intent anIntent = new Intent(this, seeDoctor2.class);
             startActivity(anIntent);
         } else if (id == R.id.nav_about) {
             Intent anIntent = new Intent(this, About.class);
@@ -204,7 +212,25 @@ public class UserProfile2 extends AppCompatActivity
         editor.putFloat("weight", weightFloat);
         editor.apply();
 
+        //calculate and set bmi
+        TextView bmiTextView = (TextView) findViewById(R.id.bmi);
+        String bmi = valueOf(heightFloat/weightFloat);
+        bmiTextView.setText(bmi);
+
         Snackbar.make(v, "Changes saved!", Snackbar.LENGTH_SHORT).show();
+
+        // TODO: 06/11/2016 MAKE SNACKBAR FOR SAVING REAPPEEAR AFTER A FEW SECONDS
+
+//        final View parentLayout = findViewById(R.id.content_user_profile2);
+//        Snackbar bar = Snackbar.make(parentLayout, "", Snackbar.LENGTH_INDEFINITE)
+//                .setAction("Save Changes", new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        onClick_saveChanges(parentLayout);
+//                    }
+//                });
+//
+//        bar.show();
     }
 
 
@@ -255,7 +281,7 @@ public class UserProfile2 extends AppCompatActivity
             case R.id.radioButtonFemale:
                 if (checked){
                     SharedPreferences.Editor editor = prefs.edit();
-                    editor.putString("bloodtype", "Female");
+                    editor.putString("gender", "Female");
                     editor.apply();
                 }
                 break;
