@@ -1,5 +1,7 @@
 package xyz.linuskinzel.med44;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +17,8 @@ import java.util.ArrayList;
 
 public class PrescriptionAdapter extends RecyclerView.Adapter<PrescriptionAdapter.ViewHolder> {
     private ArrayList<String[]> mDataset;
+    databaseActions dbActions;
+    Context context;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -23,16 +27,21 @@ public class PrescriptionAdapter extends RecyclerView.Adapter<PrescriptionAdapte
         // each data item is just a string in this case
         public CardView mCardView;
         public TextView drugnametextview;
-        public TextView forDaystextview;
+        public TextView information1;
         public TextView perdaystextview;
+        public TextView delete;
+        public TextView remaining;
         public ViewHolder(CardView v) {
             super(v);
             mCardView = v;
             drugnametextview = (TextView) v.findViewById(R.id.drug123);
-            forDaystextview = (TextView) v.findViewById(R.id.fordays);
+            information1 = (TextView) v.findViewById(R.id.information);
             perdaystextview = (TextView) v.findViewById(R.id.howmany);
+            delete = (TextView) v.findViewById(R.id.delete);
+            remaining = (TextView) v.findViewById(R.id.remaining);
         }
     }
+
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public PrescriptionAdapter(ArrayList myDataset) {
@@ -57,14 +66,26 @@ public class PrescriptionAdapter extends RecyclerView.Adapter<PrescriptionAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-
+        context = holder.drugnametextview.getContext();
         String[] temp = mDataset.get(position);
-        String drug = temp[0];
+        final String drug = temp[0];
         String fordays = temp[2];
         String perday = temp[1];
+        final String prescriptionID = temp[3];
         holder.drugnametextview.setText(drug);
-        holder.forDaystextview.setText("Take the drug for "+fordays+" days.");
-        holder.perdaystextview.setText("Take "+perday+" pills per day.");
+        holder.information1.setText(perday+" pills per day for "+fordays+" days.");
+        holder.remaining.setText("Remaining: "+fordays+" days");
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                dbActions = new databaseActions(context);
+                dbActions.open();
+                dbActions.deletePrescription(prescriptionID);
+
+                context.startActivity(new Intent(context, Prescriptions2.class));
+            }
+        });
 
     }
 

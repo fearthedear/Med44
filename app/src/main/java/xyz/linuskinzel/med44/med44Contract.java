@@ -27,6 +27,7 @@ public final class med44Contract {
         public static final String COLUMN_NAME_TAKE_FOR_HOW_LONG = "take_for_how_long";
         public static final String COLUMN_NAME_HOW_MANY_DAILY = "how_many_daily";
         public static final String COLUMN_NAME_HOW_TAKE_WHEN = "take_when";
+        public static final String COLUMN_NAME_TIMESTAMP = "timestamp";
     }
 
     public static class travels implements BaseColumns {

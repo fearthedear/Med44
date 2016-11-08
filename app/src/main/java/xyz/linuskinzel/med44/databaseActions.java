@@ -35,7 +35,7 @@ public class databaseActions {
                 med44Contract.prescriptions.TABLE_NAME,
                 new String[] {
                         med44Contract.prescriptions.COLUMN_NAME_DRUG, med44Contract.prescriptions.COLUMN_NAME_HOW_MANY_DAILY,
-                        med44Contract.prescriptions.COLUMN_NAME_TAKE_FOR_HOW_LONG
+                        med44Contract.prescriptions.COLUMN_NAME_TAKE_FOR_HOW_LONG, med44Contract.prescriptions._ID
                 },
                 null, null, null, null, null);
     }
@@ -59,6 +59,10 @@ public class databaseActions {
         open();
         long newRowID =  db.insert(med44Contract.prescriptions.TABLE_NAME, null, values);
         close();
+    }
+
+    public int deletePrescription(String id1) {
+        return db.delete(med44Contract.prescriptions.TABLE_NAME, med44Contract.prescriptions._ID + "=" + id1, null);
     }
 
 

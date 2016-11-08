@@ -16,6 +16,7 @@ public class med44dbHelper extends SQLiteOpenHelper {
 
     private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA_SEP = ",";
+    private static final String TIMESTAMP = "DEFAULT CURRENT_TIMESTAMP NOT NULL";
     private static final String SQL_CREATE_VACCINES =
             //// TODO: 26/10/2016 Add correct field types
             "CREATE TABLE " + med44Contract.vaccines.TABLE_NAME + " (" +
