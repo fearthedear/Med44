@@ -6,12 +6,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -127,7 +127,7 @@ public class setupActivity extends AppCompatActivity {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+
     }
 
     @Override
@@ -183,15 +183,22 @@ public class setupActivity extends AppCompatActivity {
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
 
+    private TextInputLayout ageInput;
+    private TextInputLayout nameInput;
+    private TextInputLayout heightInput;
+    private TextInputLayout weightInput;
     public void onClick_submit(View v) {
 
         //getting the values entered by user
-        EditText name = (EditText) findViewById(R.id.editText1);
-        String nameStr = name.getText().toString();
-        EditText age = (EditText) findViewById(R.id.editText2);
+        nameInput = (TextInputLayout) findViewById(R.id.editText1);
+        ageInput = (TextInputLayout) findViewById(R.id.editText2);
+        heightInput = (TextInputLayout) findViewById(R.id.editText4);
+        weightInput = (TextInputLayout) findViewById(R.id.editText5);
+        String nameStr = nameInput.getEditText().getText().toString();
+
         int ageInt;
         try {
-            ageInt = Integer.valueOf(age.getText().toString());
+            ageInt = Integer.valueOf(ageInput.getEditText().getText().toString());
         } catch (Exception e) {
             Toast.makeText(this, "Please enter your age", Toast.LENGTH_SHORT).show();
             return;
@@ -199,18 +206,18 @@ public class setupActivity extends AppCompatActivity {
 
 //        EditText gender = (EditText) findViewById(R.id.editText3);
 //        String genderStr = gender.getText().toString();
-        EditText height = (EditText) findViewById(R.id.editText4);
+
         Float heightFloat = null;
         try {
-            heightFloat = Float.valueOf(height.getText().toString());
+            heightFloat = Float.valueOf(heightInput.getEditText().getText().toString());
         } catch (Exception e) {
             Toast.makeText(this, "Please enter your height", Toast.LENGTH_SHORT).show();
             return;
         }
-        EditText weight = (EditText) findViewById(R.id.editText5);
+
         Float weightFloat = null;
         try {
-            weightFloat = Float.valueOf(weight.getText().toString());
+            weightFloat = Float.valueOf(weightInput.getEditText().getText().toString());
         } catch (Exception e) {
             Toast.makeText(this, "Please enter your weight", Toast.LENGTH_SHORT).show();
             return;

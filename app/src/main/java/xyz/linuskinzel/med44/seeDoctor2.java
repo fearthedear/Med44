@@ -25,6 +25,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -301,11 +302,11 @@ public class seeDoctor2 extends AppCompatActivity
                     mMap.addMarker(markerOptions);
                 }
 
-                Snackbar.make(mainCoordinatorLayout, jsonArray.length() + " doctors found.",
-                        Snackbar.LENGTH_SHORT).show();
+                Toast.makeText(this, jsonArray.length() + " doctors found.",
+                        Toast.LENGTH_SHORT).show();
             } else if (result.getString(STATUS).equalsIgnoreCase(ZERO_RESULTS)) {
-                Snackbar.make(mainCoordinatorLayout, "No doctors found within a 5km radius",
-                        Snackbar.LENGTH_SHORT).show();
+                Toast.makeText(this, "No doctors found within a 5km radius",
+                        Toast.LENGTH_SHORT).show();
             }
 
         } catch (JSONException e) {

@@ -9,8 +9,8 @@
     <string name="title_activity_setup">setupActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="please_enter_the_information_below">Please enter the information below.</string>
-    <string name="welcome_to_med44">Welcome to MED44!</string>
+    <string name="please_enter_the_information_below"><b>Please enter the information below.</b></string>
+    <string name="welcome_to_med44"><b>Welcome to MED44!</b></string>
     <string name="noPrescriptions">It looks like you don\'t have any prescriptions. Great! \nShould your doctor have given you one, though, add it with the button below. It will remind you to take and provide general information.</string>
     <string name="noConditions">It looks like you haven\'t added any medical conditions. Add them when diagnosed to help doctors identify conditions faster!</string>
     <string name="noVisits">It looks like you haven\'t added any visits at the Doctor yet. Make sure to add after your next visit! It will make future diagnosis easier.</string>
@@ -20,6 +20,7 @@
     </string-array>
 
     <string-array name="blood_array">
+        <item>Select</item>
         <item>A</item>
         <item>B</item>
         <item>AB</item>
@@ -46,4 +47,5 @@
     <string name="title_activity_about">About</string>
     <string name="title_activity_vaccines2">Vaccines2</string>
     <string name="title_activity_see_doctor2">Map</string>
+    <string name="if_you_don_t_know_your_blood_type_leave_empty"><i>If you don\'t know your blood type, leave empty.</i></string>
 </resources>

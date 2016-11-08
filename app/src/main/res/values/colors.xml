@@ -8,4 +8,5 @@
     <color name="white">#ffffff</color>
     <color name="teal_500">#3F51B5</color>
     <color name="black50percent">#80000000</color>
+    <color name="white50percent">#80ffffff</color>
 </resources>

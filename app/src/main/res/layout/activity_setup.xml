@@ -8,16 +8,14 @@
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
-    <TextView
+    <ImageView
         android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:keepScreenOn="true"
-        android:text="replace with nice stock photo"
-        android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold" />
+        android:src="@drawable/setup"
+        android:scaleType="centerCrop"/>
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
@@ -29,7 +27,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp">
+
 
             <TextView
                 android:text="@string/welcome_to_med44"
@@ -50,109 +51,132 @@
                 android:textSize="17sp"
                 android:textColor="@color/white"/>
 
-            <!-- Todo: change edittext to TextInputLayout for material design -->
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:hint="Your Name"
-                android:ems="10"
-                android:background="@color/white"
-                android:id="@+id/editText1"
-                android:layout_marginTop="10dp"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:hint="Age"
-                android:ems="10"
-                android:background="@color/white"
-                android:id="@+id/editText2"
-                android:layout_marginTop="10dp"/>
 
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@color/white">
-                <TableRow>
-                    <TextView
-                        android:text="Gender"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"/>
-                    <Spinner
+                android:background="@color/white50percent"
+                android:layout_marginTop="45dp"
+                android:padding="10dp">
+                <TableRow
+                    android:layout_width="match_parent">
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:id="@+id/gender_spinner"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"/>
+                        android:id="@+id/editText1" >
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Your Name"
+                            android:inputType="textPersonName" />
+                    </android.support.design.widget.TextInputLayout>
                 </TableRow>
-            </TableLayout>
-
-
-
-            <!--<EditText-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:inputType="text"-->
-                <!--android:hint="Gender"-->
-                <!--android:ems="10"-->
-                <!--android:background="@color/white"-->
-                <!--android:id="@+id/editText3"-->
-                <!--android:layout_marginTop="10dp"/>-->
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:hint="Height"
-                android:ems="10"
-                android:background="@color/white"
-                android:id="@+id/editText4"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:hint="Weight"
-                android:ems="10"
-                android:background="@color/white"
-                android:id="@+id/editText5"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"/>
-
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@color/white">
                 <TableRow>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editText2"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Age"
+                            android:inputType="number" />
+                    </android.support.design.widget.TextInputLayout>
+                </TableRow>
+
+                <TableRow>
+
+                        <TextView
+                            android:paddingLeft="5dp"
+                            android:text="Gender"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"/>
+                        <Spinner
+                            android:theme="@style/ThemeOverlay.AppCompat.Light"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:id="@+id/gender_spinner"
+                            android:layout_height="55dp"
+                            android:spinnerMode="dropdown"/>
+
+                </TableRow>
+
+            <TableRow>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText4"
+                    android:layout_width="0dp"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:hint="Height" />
+                </android.support.design.widget.TextInputLayout>
+
+            </TableRow>
+
+            <TableRow>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText5"
+                    android:layout_width="0dp"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:hint="Weight" />
+                </android.support.design.widget.TextInputLayout>
+
+            </TableRow>
+
+                <TableRow>
+
                     <TextView
+                        android:paddingLeft="5dp"
                         android:text="Blood Type"
                         android:layout_width="0dp"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"/>
                     <Spinner
+                        android:theme="@style/ThemeOverlay.AppCompat.Light"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:id="@+id/blood_spinner"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"/>
+                        android:layout_height="55dp"
+                        android:spinnerMode="dropdown"/>
+
                 </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:text="@string/if_you_don_t_know_your_blood_type_leave_empty"/>
+                </TableRow>
+
             </TableLayout>
 
-            <Button
-                android:text="Continue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/button"
-                android:onClick="onClick_submit"/>
+                <Button
+                    android:layout_margin="20dp"
+                    android:layout_gravity="center"
+                    android:text="Continue"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/button"
+                    android:onClick="onClick_submit"/>
 
 
         </LinearLayout>
-
 
         <LinearLayout
             android:id="@+id/fullscreen_content_controls"
@@ -164,15 +188,8 @@
             android:orientation="horizontal"
             tools:ignore="UselessParent">
 
-            <Button
-                android:id="@+id/dummy_button"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/dummy_button" />
+            </LinearLayout>
 
-        </LinearLayout>
 
 
     </FrameLayout>
