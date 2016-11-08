@@ -71,7 +71,8 @@ public class databaseActions {
         return db.query(
                 med44Contract.med_conditions.TABLE_NAME,
                 new String[] {
-                        med44Contract.med_conditions.COLUMN_NAME_NAME, med44Contract.med_conditions.COLUMN_NAME_DATE_DIAGNOSED
+                        med44Contract.med_conditions.COLUMN_NAME_NAME, med44Contract.med_conditions.COLUMN_NAME_DATE_DIAGNOSED,
+                        med44Contract.med_conditions._ID
                 },
                 null, null, null, null, null);
     }
@@ -84,6 +85,9 @@ public class databaseActions {
         open();
         long newRowID = db.insert(med44Contract.med_conditions.TABLE_NAME, null, values);
     }
+    public int deleteCondition(String id1) {
+        return db.delete(med44Contract.med_conditions.TABLE_NAME, med44Contract.med_conditions._ID + "=" + id1, null);
+    }
 
 
     //VISITS RELATED DATABASE ACTIONS
@@ -92,7 +96,7 @@ public class databaseActions {
                 med44Contract.doc_visits.TABLE_NAME,
                 new String[]{
                         med44Contract.doc_visits.COLUMN_NAME_DATE, med44Contract.doc_visits.COLUMN_NAME_DIAGNOSED,
-                        med44Contract.doc_visits.COLUMN_NAME_IMAGE
+                        med44Contract.doc_visits.COLUMN_NAME_IMAGE, med44Contract.doc_visits._ID
                 },
                 null, null, null, null, null);
     }
@@ -105,6 +109,9 @@ public class databaseActions {
 
         open();
         long newRowID = db.insert(med44Contract.doc_visits.TABLE_NAME, null, values);
+    }
+    public int deleteVisit(String id1) {
+        return db.delete(med44Contract.doc_visits.TABLE_NAME, med44Contract.doc_visits._ID + "=" + id1, null);
     }
 
     //VACCINES RELATED DATABASE ACTIONS

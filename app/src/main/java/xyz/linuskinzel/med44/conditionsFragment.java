@@ -76,7 +76,7 @@ public class conditionsFragment extends Fragment {
 
         if (cursor.moveToFirst()) {
             do {
-                String[] record = {cursor.getString(0),cursor.getString(1)};
+                String[] record = {cursor.getString(0),cursor.getString(1),cursor.getString(2)};
                 records.add(record);
             }
             while (cursor.moveToNext());

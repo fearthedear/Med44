@@ -35,16 +35,29 @@
 
         </LinearLayout>
 
-
-
-        <TextView
-            android:id="@+id/diagnosed_date"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
-            android:layout_below="@+id/heading_layout"
-            android:textSize="18sp"
-            android:layout_margin="16dp"/>
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/diagnosed_date"
+                android:layout_width="0dp"
+                android:layout_weight="8"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_below="@+id/heading_layout"
+                android:textSize="18sp"
+                android:layout_margin="16dp"/>
+            <ImageView
+                android:id="@+id/deleteVisit"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:src="@drawable/delete"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+
 
         <TextView
             android:id="@+id/image1"

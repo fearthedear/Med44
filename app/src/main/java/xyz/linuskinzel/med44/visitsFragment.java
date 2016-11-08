@@ -70,7 +70,7 @@ public class visitsFragment extends Fragment {
 
         if (cursor.moveToFirst()) {
             do {
-                String[] record = {cursor.getString(0),cursor.getString(1),cursor.getString(2)};
+                String[] record = {cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3)};
                 records.add(record);
             }
             while (cursor.moveToNext());

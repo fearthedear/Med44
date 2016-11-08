@@ -11,7 +11,7 @@
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="4dp"
-        android:hint="Which condition was diagnosed?" />
+        android:hint="Was a condition diagnosed?" />
 
     <!--TODO: make this a datepicker-->
     <EditText
@@ -23,7 +23,7 @@
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="4dp"
-        android:hint="When was it diagnosed?" />
+        android:hint="When was the visit?" />
 
     <!--TODO: make this an image upload -->
     <EditText
