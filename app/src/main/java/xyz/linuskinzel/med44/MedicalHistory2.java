@@ -23,6 +23,7 @@ public class MedicalHistory2 extends AppCompatActivity
 
     databaseActions dbActions;
 
+
     @Override
     public void onDialogPositiveClick(DialogFragment dialog, String condition, String date, String identifier) {
         // User touched the dialog's positive button
@@ -150,5 +151,4 @@ public class MedicalHistory2 extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 }

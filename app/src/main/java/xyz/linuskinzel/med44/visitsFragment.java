@@ -2,12 +2,14 @@ package xyz.linuskinzel.med44;
 
 
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import static android.app.Activity.RESULT_OK;
 
 
 /**
@@ -24,6 +28,8 @@ public class visitsFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+
+    private static final int PICK_IMAGE = 100;
 
     public visitsFragment() {
         // Required empty public constructor
@@ -105,4 +111,20 @@ public class visitsFragment extends Fragment {
         DialogFragment newFragment = new addVisitFragment();
         newFragment.show(getActivity().getFragmentManager(), "addVisit");
     }
+
+    // TODO: 08/11/2016 Fix below code to make image attachment work 
+    public void attachImage(String visitID) {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Complete action using"), 1);
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
+            Log.i("tag", "onActivityResult: image selected");
+        }
+    }
+
 }

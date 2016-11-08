@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * Created by linus on 04/11/2016.
@@ -53,15 +54,15 @@ public class addVisitFragment extends DialogFragment {
         final EditText diagnosis = (EditText) view.findViewById(R.id.visitDiagnosis);
         final EditText diagnosed_date_input = (EditText) view.findViewById(R.id.diagnosed_date_input);
         //// TODO: 04/11/2016 Process image here
-        final EditText image1 = (EditText) view.findViewById(R.id.imageInput);
+        final TextView image1 = (TextView) view.findViewById(R.id.imageInput);
 
         builder.setView(view)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         String condition = diagnosis.getText().toString();
                         String date = diagnosed_date_input.getText().toString();
-                        String image = image1.getText().toString();
-                        mListener.onDialogPositiveClick(addVisitFragment.this, condition, date, image);
+                        //String image = image1.getText().toString();
+                        mListener.onDialogPositiveClick(addVisitFragment.this, condition, date, "empty");
                     }
                 })
                 .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {

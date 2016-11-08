@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ public class visitsAdapter extends RecyclerView.Adapter<visitsAdapter.ViewHolder
             conditionName = (TextView) v.findViewById(R.id.condition_name);
             diagnosedDate = (TextView) v.findViewById(R.id.diagnosed_date);
             deleteVisit = (ImageView) v.findViewById(R.id.deleteVisit);
-            image1 = (TextView) v.findViewById(R.id.image1);
+            image1 = (TextView) v.findViewById(R.id.imageInput);
         }
     }
 
@@ -67,7 +68,6 @@ public class visitsAdapter extends RecyclerView.Adapter<visitsAdapter.ViewHolder
 
         holder.conditionName.setText(name);
         holder.diagnosedDate.setText("Diagnosed: "+diagnosed);
-        holder.image1.setText("Image you added: "+image1);
 
         holder.deleteVisit.setOnClickListener(new View.OnClickListener() {
 
@@ -78,6 +78,15 @@ public class visitsAdapter extends RecyclerView.Adapter<visitsAdapter.ViewHolder
                 dbActions.deleteVisit(visitID);
 
                 context.startActivity(new Intent(context, MedicalHistory2.class));
+            }
+        });
+        holder.image1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "This feature is under development. Please check back later!", Toast.LENGTH_LONG).show();
+//                visitsFragment visitsFragment = new visitsFragment();
+//                visitsFragment.attachImage(visitID);
+
             }
         });
 
